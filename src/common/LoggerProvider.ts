@@ -1,4 +1,4 @@
-import log4js, { levels } from "log4js";
+import log4js from "log4js";
 import { LoggerInstanceType } from "LoggerProviderExpand";
 
 enum LoggerLevel {

@@ -4,7 +4,8 @@
     "name": "yiwwhl"
   },
   "scripts": {
-    "dev": "nodemon --watch src/ -e ts --exec ts-node ./src/app.ts"
+    "dev": "export NODE_ENV=development&& nodemon --watch src/ -e ts --exec ts-node ./src/app.ts",
+    "prod": "export NODE_ENV=production&& nodemon --watch src/ -e ts --exec ts-node ./src/app.ts"
   },
   "dependencies": {
     "@types/jsonwebtoken": "^8.5.9",
