@@ -1,3 +1,5 @@
+// 路由自动导入
+
 import fs from "fs";
 import path from "path";
 import Router from "koa-router";
@@ -5,6 +7,7 @@ import body from "koa-body";
 import json from "koa-json";
 import Koa from "koa";
 import ExceptionMiddleWare from "./ExceptionMiddleWare";
+import * as ResponseProvide from "./ResponseProvide";
 
 let rootRouter: Router;
 
@@ -12,6 +15,7 @@ class RouterAutoRegister {
   static register = new RouterAutoRegister();
 
   regist(app: Koa) {
+    Object.assign(app.context, ResponseProvide);
     this.loadAllRouters();
     this.listen(app);
   }
