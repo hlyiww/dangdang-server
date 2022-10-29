@@ -21,4 +21,4 @@ router.post("/addUser", async (ctx: Context) => {
   };
 });
 
-export default router;
+module.exports = router;
