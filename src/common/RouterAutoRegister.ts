@@ -4,6 +4,7 @@ import Router from "koa-router";
 import body from "koa-body";
 import json from "koa-json";
 import Koa from "koa";
+import ExceptionMiddleWare from "./ExceptionMiddleWare";
 
 let rootRouter: Router;
 
@@ -25,6 +26,7 @@ class RouterAutoRegister {
   }
 
   listen(app: Koa) {
+    app.use(ExceptionMiddleWare);
     app.use(rootRouter.routes());
     app.listen(6008);
   }
