@@ -14,6 +14,8 @@ let rootRouter: Router;
 class RouterAutoRegister {
   static register = new RouterAutoRegister();
 
+  private constructor() {}
+
   regist(app: Koa) {
     Object.assign(app.context, ResponseProvide);
     this.loadAllRouters();
