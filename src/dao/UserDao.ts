@@ -1,4 +1,3 @@
-import UserInfo from "../model/UserInfo";
 import { isStringNotEmpty } from "../utils/BaseProtector";
 
 class UserDao {
