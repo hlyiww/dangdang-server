@@ -10,8 +10,6 @@ router.prefix("/user");
 
 router.get("/findUserInfo/:username/:psw", async (ctx: Context) => {
   const { username, psw } = ctx.params;
-  const userinfo = await UserDaoInstance.findUserInfo(username, psw);
-  console.log(userinfo[0].username);
 
   ctx.body = {
     username,

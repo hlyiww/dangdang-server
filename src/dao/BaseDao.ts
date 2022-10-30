@@ -1,32 +1,30 @@
-import mysql, { Connection } from "mysql";
+import { Dialect } from "sequelize";
+import { Sequelize } from "sequelize-typescript";
 import DBConfigInstance from "../config/DBConfig";
 
 class BaseDao {
   static baseDaoInstance = new BaseDao();
 
-  connection!: Connection;
+  sequelizeConnection!: Sequelize;
 
   private constructor() {
-    this.connectDB();
+    this.buildSequelizeConnection("mysql");
   }
 
-  async connectDB() {
-    this.connection = await mysql.createConnection(
-      DBConfigInstance.getDBConfig()
-    );
-  }
+  async buildSequelizeConnection(dialect: Dialect) {
+    const { host, user, password, database, port } =
+      DBConfigInstance.getDBConfig();
 
-  async query<T>(sql: string): Promise<T> {
-    return new Promise((resolve, reject) => {
-      this.connection.query(sql, (err: any, result: T) => {
-        if (err) {
-          reject(err);
-        } else {
-          resolve(result);
-        }
-      });
+    this.sequelizeConnection = new Sequelize(database, user, password, {
+      host,
+      port,
+      dialect,
+      define: {
+        timestamps: false,
+        freezeTableName: true,
+      },
     });
   }
 }
 
-export default BaseDao.baseDaoInstance;
+export const { sequelizeConnection } = BaseDao.baseDaoInstance;

@@ -1,6 +1,5 @@
 import UserInfo from "../model/UserInfo";
 import { isStringNotEmpty } from "../utils/BaseProtector";
-import BaseDao from "./BaseDao";
 
 class UserDao {
   static UserDaoInstance = new UserDao();
@@ -14,7 +13,6 @@ class UserDao {
     if (isStringNotEmpty(psw)) {
       sql += ` and psw='${psw}'`;
     }
-    return BaseDao.query<UserInfo[]>(sql);
   }
 }
 
