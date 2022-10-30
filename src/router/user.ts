@@ -2,7 +2,7 @@ import { Context } from "koa";
 import Router from "koa-router";
 
 import loggerInstance from "../common/LoggerProvider";
-import UserDaoInstance from "../dao/UserDao";
+import { addUser } from "../dao/UserDao";
 
 const router = new Router();
 
@@ -20,9 +20,8 @@ router.get("/findUserInfo/:username/:psw", async (ctx: Context) => {
 router.post("/addUser", async (ctx: Context) => {
   const user = await ctx.request.body;
   loggerInstance.debug(user);
-  ctx.body = {
-    message: "添加成功",
-  };
+  const res = await addUser(user);
+  ctx.body = ctx.success(res);
 });
 
 module.exports = router;

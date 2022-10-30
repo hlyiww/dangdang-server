@@ -11,7 +11,7 @@ class BaseDao {
     this.buildSequelizeConnection("mysql");
   }
 
-  async buildSequelizeConnection(dialect: Dialect) {
+  buildSequelizeConnection(dialect: Dialect) {
     const { host, user, password, database, port } =
       DBConfigInstance.getDBConfig();
 

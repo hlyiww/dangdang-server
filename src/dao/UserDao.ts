@@ -1,18 +1,17 @@
-import { isStringNotEmpty } from "../utils/BaseProtector";
+import { UserInfoModel } from "../model/UserInfo";
+
+export type UserInfo = {
+  userid: number;
+  username: string;
+  psw: string;
+  address: string;
+  valid: number;
+};
 
 class UserDao {
-  static UserDaoInstance = new UserDao();
-  private constructor() {}
-
-  findUserInfo(username: string, psw: string) {
-    let sql = "select * from userinfo where 1=1";
-    if (isStringNotEmpty(username)) {
-      sql += ` and username='${username}'`;
-    }
-    if (isStringNotEmpty(psw)) {
-      sql += ` and psw='${psw}'`;
-    }
+  static addUser(userInfo: UserInfo) {
+    return UserInfoModel.create(userInfo);
   }
 }
 
-export default UserDao.UserDaoInstance;
+export const { addUser } = UserDao;
