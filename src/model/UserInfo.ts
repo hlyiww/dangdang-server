@@ -3,7 +3,7 @@ import { sequelizeConnection } from "../dao/BaseDao";
 
 class UserInfo {
   static buildModel() {
-    return sequelizeConnection.define(
+    const UserInfoModel = sequelizeConnection.define(
       "userinfo",
       {
         userid: {
@@ -38,6 +38,10 @@ class UserInfo {
         timestamps: false,
       }
     );
+
+    UserInfoModel.sync({ force: false });
+
+    return UserInfoModel;
   }
 }
 
