@@ -2,7 +2,7 @@ import { Context } from "koa";
 import Router from "koa-router";
 
 import loggerInstance from "../common/LoggerProvider";
-import { addUser } from "../dao/UserDao";
+import { addUser, getAllUsers } from "../dao/UserDao";
 
 const router = new Router();
 
@@ -15,6 +15,12 @@ router.get("/findUserInfo/:username/:psw", async (ctx: Context) => {
     username,
     age: 12,
   };
+});
+
+router.get("/getAllUsers", async (ctx: Context) => {
+  const allUsers = await getAllUsers();
+  console.log(allUsers);
+  ctx.body = ctx.success(allUsers);
 });
 
 router.post("/addUser", async (ctx: Context) => {

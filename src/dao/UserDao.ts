@@ -12,6 +12,11 @@ class UserDao {
   static addUser(userInfo: UserInfo) {
     return UserInfoModel.create(userInfo);
   }
+  static getAllUsers() {
+    return UserInfoModel.findAll({
+      raw: true,
+    });
+  }
 }
 
-export const { addUser } = UserDao;
+export const { addUser, getAllUsers } = UserDao;
