@@ -10,6 +10,7 @@ import {
   getUserByNameLike,
   getUserByUnameAndUpsw,
   countUserInfo,
+  findUserWithPager,
 } from "../dao/UserDao";
 
 const router = new Router();
@@ -55,6 +56,11 @@ router.post("/addUser", async (ctx: Context) => {
 router.get("/countTotal", async (ctx: Context) => {
   const res = await countUserInfo();
   ctx.body = ctx.success(res);
+});
+
+router.get("/findUserWithPager/:pageNum/:pageSize", async (ctx: Context) => {
+  const { pageNum, pageSize } = ctx.params;
+  ctx.body = await findUserWithPager(pageNum, pageSize);
 });
 
 module.exports = router;

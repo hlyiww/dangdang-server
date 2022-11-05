@@ -75,6 +75,15 @@ class UserDao {
       },
     });
   }
+
+  static findUserWithPager(pageNum: any, pageSize: any) {
+    pageNum = pageSize * (pageNum - 1);
+    return UserInfoModel.findAll({
+      raw: true,
+      limit: Number(pageSize),
+      offset: Number(pageNum),
+    });
+  }
 }
 
 export const {
@@ -85,4 +94,5 @@ export const {
   getUserByNameLike,
   getUserByUnameAndUpsw,
   countUserInfo,
+  findUserWithPager,
 } = UserDao;
