@@ -17,6 +17,8 @@ class RouterAutoRegister {
   private constructor() {}
 
   regist(app: Koa) {
+    // TODO: 1. 抽离 Object.assign 为 extend
+    //       2. 让 success 和 fail 具备类型提示，方便使用
     Object.assign(app.context, ResponseProvide);
     this.loadAllRouters();
     this.listen(app);
