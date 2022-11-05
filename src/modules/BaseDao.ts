@@ -24,6 +24,12 @@ class BaseDao {
         timestamps: false,
         freezeTableName: true,
       },
+      pool: {
+        max: 300,
+        min: 100,
+        idle: 10000,
+        acquire: 1000,
+      },
     });
   }
 
