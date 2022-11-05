@@ -1,5 +1,5 @@
 import { DataTypes } from "sequelize";
-import { sequelizeConnection } from "../dao/BaseDao";
+import { sequelizeConnection } from "../../BaseDao";
 
 class UserInfo {
   static buildModel() {

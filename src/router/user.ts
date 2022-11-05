@@ -11,7 +11,7 @@ import {
   getUserByUnameAndUpsw,
   countUserInfo,
   findUserWithPager,
-} from "../dao/UserDao";
+} from "../modules/userinfo/dao/UserDao";
 
 const router = new Router();
 

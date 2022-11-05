@@ -1,5 +1,6 @@
 import { Dialect } from "sequelize";
 import { Sequelize } from "sequelize-typescript";
+import path from "path";
 import DBConfigInstance from "../config/DBConfig";
 
 class BaseDao {
@@ -25,6 +26,13 @@ class BaseDao {
       },
     });
   }
+
+  addModels() {
+    const modelPath = path.join(process.cwd(), "/src/modules/decoratorModels");
+    this.sequelizeConnection.addModels([modelPath]);
+  }
 }
 
-export const { sequelizeConnection } = BaseDao.baseDaoInstance;
+const baseDaoInstance = BaseDao.baseDaoInstance;
+baseDaoInstance.addModels();
+export const { sequelizeConnection } = baseDaoInstance;

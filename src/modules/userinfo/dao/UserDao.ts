@@ -1,5 +1,5 @@
 import { Op, Sequelize } from "sequelize";
-import { UserInfoModel } from "../model/UserInfo";
+import { UserInfoModel } from "../model";
 
 export type UserInfo = {
   userid: number;
