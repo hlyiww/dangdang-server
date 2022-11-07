@@ -30,7 +30,7 @@ class DBConfigProvider {
       process.env.NODE_ENV === Env.DEVELOPMENT
         ? Env.DEVELOPMENT
         : Env.PRODUCTION;
-
+    this.env = Env.DEVELOPMENT;
     this.buildDBConfig();
   }
 
