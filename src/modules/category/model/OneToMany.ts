@@ -14,19 +14,3 @@ thirdCtgyModel.belongsTo(secondCtgyModel, {
   foreignKey: "secondctgyid",
   targetKey: "secondctgyid",
 });
-
-export const findSecondThirdCtgyByFirstCtgyId = async (firstctgyid: number) => {
-  const result = await secondCtgyModel.findAll({
-    // raw: true,
-    where: {
-      firstctgyid,
-    },
-    include: [
-      {
-        model: thirdCtgyModel,
-        as: "thirdctgy",
-      },
-    ],
-  });
-  return result;
-};
